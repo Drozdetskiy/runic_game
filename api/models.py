@@ -1,21 +1,23 @@
-from django.contrib.auth import get_user_model
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 
-# Create your models here.
 
-
-class Link(models.Model):
-    link = models.CharField(max_length=100)
-    user = models.ForeignKey(
-        get_user_model(),
-        on_delete=models.CASCADE
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+STATUS_CHOICES = (
+    ('win', 'WIN'),
+    ('loose', 'LOOSE')
+)
 
 
 class Game(models.Model):
-    link_1 = models.ForeignKey('api.Link', related_name='link_1', on_delete=models.CASCADE)
-    link_2 = models.ForeignKey('api.Link', related_name='link_2', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    game_history = JSONField()
+    owner = models.ForeignKey(
+        'auth.User',
+        related_name='api_game',
+        on_delete=models.CASCADE,
+    )
+    score = models.IntegerField()
+    status = models.TextField(
+        max_length=5, choices=STATUS_CHOICES, default='win'
+    )
+
