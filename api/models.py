@@ -4,7 +4,8 @@ from django.contrib.postgres.fields import JSONField
 
 STATUS_CHOICES = (
     ('win', 'WIN'),
-    ('loose', 'LOOSE')
+    ('loose', 'LOOSE'),
+    ('draw', 'DRAW')
 )
 
 

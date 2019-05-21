@@ -19,5 +19,7 @@ urlpatterns = [
     path('games/<int:pk>/', views.GameDetail.as_view()),
     path('users/', views.UserList.as_view()),
     path('users/<int:pk>/', views.UserDetail.as_view()),
-    path('tmp', views.Tmp.as_view()),
+    path('runic_game_action/<str:game_hash>', views.GameMaster.as_view()),
+    path('new_game/', views.GameUrl.as_view()),
+    path('users/register', views.CreateUserView.as_view())
 ]
