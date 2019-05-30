@@ -41,9 +41,9 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 ## Built with
 
-- [Django](https://www.djangoproject.com/) - Flask is a highlevel framework for Python based.
+- [Django](https://www.djangoproject.com/) - Django is a highlevel framework for Python.
 - [DjangoREST](https://www.django-rest-framework.org/) - Tools for fast creating REST api with Django.
-- [VueJS](https://vuejs.org/) - Great Javascript Frontend framework that I really like!
+- [VueJS](https://vuejs.org/) - Great Javascript frontend framework that I really like! (This repo doesn't include  frontend part).
 
 
 ## Contacts
