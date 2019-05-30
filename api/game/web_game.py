@@ -1,4 +1,3 @@
-import json
 import secrets
 import time
 from random import randint
@@ -59,7 +58,7 @@ class WebGame(Game):
         _res["card_queue_2"] = list(range(len(_res["player_2_hand"])))
         _res["player_number"] = self.player_number
         _res["bot_number"] = self.bot_number
-        return json.dumps(_res)
+        return _res
 
     @property
     def json_repr(self):

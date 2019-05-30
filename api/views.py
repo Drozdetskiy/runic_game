@@ -1,11 +1,8 @@
-import json
-
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
 # Create your views here.
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import api_view
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -17,13 +14,6 @@ from api.serializers import UserSerializer, GameSerializer
 from rest_framework import permissions
 
 from api.game.web_game import GameQueue
-
-
-@api_view(['GET'])
-def my_first_api_view(request, *args, **kwargs):
-    return Response(data={
-        'status': f'{request.auth}'
-}, status=202)
 
 
 class UserList(generics.ListAPIView):
@@ -98,11 +88,7 @@ class GameUrl(APIView):
         token = Token.objects.get(key=user_token)
         user_id = token.user_id
 
-        return Response(
-            json.dumps(
-                {'game_hash': GameQueue.get_new_game(user_id)}
-            )
-        )
+        return Response({'game_hash': GameQueue.get_new_game(user_id)})
 
 
 class CreateUserView(CreateAPIView):

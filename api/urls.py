@@ -2,13 +2,11 @@ from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 
 from api import views
-from api.views import my_first_api_view
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('', my_first_api_view, name='first-api'),
     path('', include(router.urls)),
     path('api-auth/', include(
         'rest_framework.urls'
