@@ -12,7 +12,7 @@ class GameQueue:
     @classmethod
     def _queue_clearing(cls):
         now = time.time()
-        for game_hash, game in cls.game_queue:
+        for game_hash, game in cls.game_queue.items():
             if now - game.created_at > ServerSettings.CRITICAL_QUEUE_TIME:
                 del cls.game_queue[game_hash]
 
